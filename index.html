@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marina Hodebert – Directrice Data & BI</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+:root { --teal:#1a7a7a; --teal2:#2a9898; --dark:#1a1a2e; --mid:#4a4a5a; --accent:#c8a96e; --light:#f5f8f8; }
+html { scroll-behavior:smooth; }
+body { font-family:'DM Sans',sans-serif; color:var(--dark); background:#fff; }
+
+nav { position:fixed; top:0; left:0; right:0; z-index:100;
+  background:rgba(26,26,46,.96); backdrop-filter:blur(8px);
+  padding:0 60px; display:flex; align-items:center; justify-content:space-between; height:54px; }
+.nav-name { font-family:'Playfair Display',serif; font-size:15px; color:#fff; }
+.nav-links { display:flex; gap:24px; }
+.nav-links a { font-size:11px; color:rgba(255,255,255,.55); text-decoration:none; letter-spacing:.5px; transition:color .2s; }
+.nav-links a:hover { color:var(--accent); }
+
+/* HERO */
+.hero { min-height:100vh; background:linear-gradient(140deg,#0b2e2e 0%,var(--dark) 65%);
+  display:flex; align-items:center; padding:100px 60px 80px; position:relative; overflow:hidden; }
+.hero::before { content:''; position:absolute; inset:0;
+  background:radial-gradient(ellipse at 75% 40%, rgba(42,152,152,.18) 0%, transparent 55%); }
+.hero-inner { max-width:980px; margin:0 auto; width:100%;
+  display:flex; align-items:center; gap:72px; position:relative; z-index:1; }
+.hero-photo { width:190px; height:190px; border-radius:50%; overflow:hidden; flex-shrink:0;
+  border:3px solid rgba(200,169,110,.5); box-shadow:0 0 0 10px rgba(200,169,110,.07); }
+.hero-photo img { width:100%; height:100%; object-fit:cover; }
+.hero-tag { font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--accent); margin-bottom:14px; font-weight:600; }
+.hero-title { font-family:'Playfair Display',serif; font-size:50px; font-weight:700; color:#fff; line-height:1.08; margin-bottom:8px; }
+.hero-sub { font-size:16px; font-weight:300; color:rgba(255,255,255,.58); margin-bottom:22px; }
+.hero-desc { font-size:14.5px; line-height:1.78; color:rgba(255,255,255,.68); font-weight:300; max-width:500px; }
+.hero-cta { display:inline-block; margin-top:30px; background:var(--accent); color:#1a1a2e;
+  font-size:11px; font-weight:600; letter-spacing:1.2px; text-transform:uppercase;
+  padding:12px 26px; border-radius:2px; text-decoration:none; transition:opacity .2s; }
+.hero-cta:hover { opacity:.85; }
+
+/* SECTIONS */
+section { padding:88px 60px; }
+.inner { max-width:960px; margin:0 auto; }
+.s-tag { font-size:9.5px; letter-spacing:3px; text-transform:uppercase; color:var(--teal2); margin-bottom:10px; font-weight:600; }
+.s-title { font-family:'Playfair Display',serif; font-size:34px; font-weight:700; color:var(--dark); margin-bottom:44px; line-height:1.2; }
+
+/* TRAJECTOIRE */
+.traj { background:var(--light); }
+.timeline { position:relative; padding-left:30px; }
+.timeline::before { content:''; position:absolute; left:5px; top:8px; bottom:8px;
+  width:2px; background:linear-gradient(180deg,var(--teal2),var(--accent)); border-radius:1px; }
+.tl { position:relative; margin-bottom:36px; }
+.tl:last-child { margin-bottom:0; }
+.tl-dot { position:absolute; left:-27px; top:5px; width:12px; height:12px;
+  border-radius:50%; background:var(--teal2); border:2px solid #f5f8f8; box-shadow:0 0 0 3px rgba(42,152,152,.2); }
+.tl-dot.gold { background:var(--accent); box-shadow:0 0 0 3px rgba(200,169,110,.2); }
+.tl-period { font-size:9.5px; color:var(--teal2); font-weight:600; letter-spacing:.5px; text-transform:uppercase; margin-bottom:3px; }
+.tl-role { font-family:'Playfair Display',serif; font-size:17px; font-weight:700; color:var(--dark); margin-bottom:2px; }
+.tl-company { font-size:12px; color:var(--accent); font-weight:600; text-transform:uppercase; letter-spacing:.5px; margin-bottom:7px; }
+.tl-desc { font-size:13px; color:var(--mid); font-weight:300; line-height:1.65; }
+
+/* HISTOIRE PBI */
+.pbi { background:#fff; }
+.pbi .s-title { margin-bottom:16px; }
+.pbi-intro { font-size:14px; color:var(--mid); font-weight:300; line-height:1.75; margin-bottom:48px; max-width:680px; border-left:2px solid var(--accent); padding-left:16px; }
+
+.actes { display:flex; flex-direction:column; gap:0; }
+.acte { display:grid; grid-template-columns:80px 1fr; gap:32px; padding:32px 0; border-bottom:1px solid #f0f0f5; align-items:start; }
+.acte:last-child { border-bottom:none; }
+.acte-num { font-family:'Playfair Display',serif; font-size:48px; font-weight:700;
+  color:var(--teal-bg, #e8f4f4); line-height:1; color:rgba(42,152,152,.15); }
+.acte-content {}
+.acte-period { font-size:9.5px; color:var(--teal2); font-weight:600; letter-spacing:1px; text-transform:uppercase; margin-bottom:4px; }
+.acte-title { font-family:'Playfair Display',serif; font-size:20px; font-weight:700; color:var(--dark); margin-bottom:10px; }
+.acte-desc { font-size:13px; color:var(--mid); font-weight:300; line-height:1.7; }
+.acte-quote { margin-top:12px; font-size:13px; font-style:italic; color:var(--teal); font-weight:400; padding-left:14px; border-left:2px solid var(--accent); }
+
+/* STATS PBI */
+.pbi-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:48px; }
+.stat-card { background:var(--light); border-radius:4px; padding:24px; text-align:center; }
+.stat-num { font-family:'Playfair Display',serif; font-size:42px; font-weight:700; color:var(--teal); line-height:1; margin-bottom:6px; }
+.stat-label { font-size:11.5px; color:var(--mid); font-weight:300; line-height:1.45; }
+
+/* PROJETS */
+.projets { background:var(--light); }
+.projets-grid { display:grid; grid-template-columns:1fr 1fr; gap:22px; }
+.card { border:1px solid #e4eded; border-radius:4px; padding:26px; background:#fff; transition:border-color .2s, transform .2s; }
+.card:hover { border-color:var(--teal2); transform:translateY(-2px); }
+.card-emoji { font-size:22px; margin-bottom:12px; }
+.card-title { font-family:'Playfair Display',serif; font-size:16px; font-weight:700; color:var(--dark); margin-bottom:7px; }
+.card-desc { font-size:12.5px; color:var(--mid); font-weight:300; line-height:1.65; margin-bottom:12px; }
+.card-impact { font-size:10.5px; font-weight:600; color:var(--teal); text-transform:uppercase; letter-spacing:.5px; }
+.card-impact::before { content:'→ '; }
+
+/* VISION */
+.vision { background:var(--dark); }
+.vision .s-tag { color:var(--accent); }
+.vision .s-title { color:#fff; margin-bottom:32px; }
+.vision-body { display:grid; grid-template-columns:1fr 1fr; gap:40px; }
+.vision-text { font-size:15px; line-height:1.82; color:rgba(255,255,255,.68); font-weight:300; grid-column:1/-1; max-width:680px; margin-bottom:8px; }
+.vp { border-left:2px solid rgba(200,169,110,.35); padding-left:18px; }
+.vp-title { font-size:12px; font-weight:600; color:var(--accent); text-transform:uppercase; letter-spacing:.5px; margin-bottom:6px; }
+.vp-text { font-size:13px; color:rgba(255,255,255,.55); font-weight:300; line-height:1.6; }
+
+/* CERTIF */
+.certif-band { background:var(--light); padding:48px 60px; }
+.certif-inner { max-width:960px; margin:0 auto; display:flex; align-items:center; gap:24px;
+  background:#fff; border:1px solid #e4eded; border-radius:4px; padding:24px 28px; }
+.certif-logo { font-size:13px; font-weight:700; color:var(--teal); letter-spacing:1.5px;
+  white-space:nowrap; border-right:1px solid #e4eded; padding-right:24px; }
+.certif-text { font-size:13px; color:var(--mid); font-weight:300; line-height:1.55; }
+.certif-text strong { font-weight:600; color:var(--dark); }
+.certif-date { margin-left:auto; font-size:11px; color:var(--teal2); font-weight:600; white-space:nowrap; }
+
+/* CONTACT */
+.contact-section { padding:88px 60px; }
+.contact-inner { max-width:960px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; }
+.contact-links { display:flex; flex-direction:column; gap:12px; align-items:flex-end; }
+.contact-link { font-size:13px; color:var(--mid); text-decoration:none; display:flex; align-items:center; gap:8px; font-weight:300; transition:color .2s; }
+.contact-link:hover { color:var(--teal); }
+
+footer { background:var(--dark); padding:20px 60px; display:flex; justify-content:space-between; align-items:center; }
+footer p { font-size:11px; color:rgba(255,255,255,.3); font-weight:300; }
+
+@media (max-width:700px) {
+  .hero-inner, .vision-body, .contact-inner { flex-direction:column; }
+  .hero-title { font-size:34px; }
+  .projets-grid, .pbi-stats { grid-template-columns:1fr; }
+  .acte { grid-template-columns:1fr; gap:8px; }
+  .acte-num { font-size:28px; }
+  nav { padding:0 20px; }
+  .nav-links { gap:14px; }
+  section, .hero, .certif-band, .contact-section { padding-left:24px; padding-right:24px; }
+  .certif-inner { flex-direction:column; }
+  .certif-date { margin-left:0; }
+  .contact-links { align-items:flex-start; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-name">Marina Hodebert</span>
+  <div class="nav-links">
+    <a href="#trajectoire">Trajectoire</a>
+    <a href="#pbi">Power BI</a>
+    <a href="#projets">Projets</a>
+    <a href="#vision">Vision</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-photo"><img src="data:image/jpeg;base64,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" alt="Marina Hodebert"></div>
+    <div>
+      <div class="hero-tag">Directrice Data &amp; BI · Membre CODIR</div>
+      <h1 class="hero-title">Marina<br>Hodebert</h1>
+      <p class="hero-sub">15+ ans à transformer la donnée en décision</p>
+      <p class="hero-desc">Je crois que la data n'a de valeur que si elle change quelque chose — dans une stratégie, dans une organisation, dans une façon de travailler. C'est ce fil conducteur qui guide tout mon parcours.</p>
+      <a href="#trajectoire" class="hero-cta">Découvrir mon parcours</a>
+    </div>
+  </div>
+</div>
+
+<section class="traj" id="trajectoire">
+  <div class="inner">
+    <div class="s-tag">Parcours</div>
+    <h2 class="s-title">Une trajectoire construite<br><em>par la donnée, pour la décision</em></h2>
+    <div class="timeline">
+      <div class="tl">
+        <div class="tl-dot gold"></div>
+        <div class="tl-period">Depuis nov. 2025</div>
+        <div class="tl-role">Responsable Data &amp; Analyse – Membre CODIR T&amp;P</div>
+        <div class="tl-company">Protectline · JV Orange / Groupama</div>
+        <div class="tl-desc">Pilotage de la stratégie Data &amp; Analyse à l'échelle de l'entreprise. Contribution aux décisions stratégiques au sein du Comité de Direction. Encadrement du pôle, gouvernance des usages data à valeur business.</div>
+      </div>
+      <div class="tl">
+        <div class="tl-dot"></div>
+        <div class="tl-period">Juil. 2019 → Oct. 2025</div>
+        <div class="tl-role">Product Owner – Référente Data / BI</div>
+        <div class="tl-company">Protectline · JV Orange / Groupama</div>
+        <div class="tl-desc">Déploiement de l'outil de reporting, structuration du pilotage de la performance, management de l'équipe data. Accompagnement des métiers et partenaires dans l'appropriation des indicateurs.</div>
+      </div>
+      <div class="tl">
+        <div class="tl-dot"></div>
+        <div class="tl-period">Fév. 2018 → Juin 2019</div>
+        <div class="tl-role">Responsable Études &amp; Data Indemnisations</div>
+        <div class="tl-company">Gan Assurance · Groupe Groupama</div>
+        <div class="tl-desc">Expertise Datalab sur les bases de données indemnisation. Construction des indicateurs, pilotage des problématiques data avec les partenaires externes.</div>
+      </div>
+      <div class="tl">
+        <div class="tl-dot"></div>
+        <div class="tl-period">Jan. 2004 → Fév. 2018</div>
+        <div class="tl-role">Chargée d'études, puis Responsable études</div>
+        <div class="tl-company">Gan Assurance &amp; Icare Assurance</div>
+        <div class="tl-desc">14 ans d'expertise technique progressive : études statistiques, actuariat, reporting, bases de données, pilotage. La fondation qui nourrit aujourd'hui toutes mes prises de décision.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pbi" id="pbi">
+  <div class="inner">
+    <div class="s-tag">Cas concret</div>
+    <h2 class="s-title">Comment la communauté Power BI<br><em>a transformé Protectline</em></h2>
+    <p class="pbi-intro">En partant de quasi rien, pendant le confinement, la curiosité et les partages de la communauté Power BI nous ont permis de monter tout le pilotage de l'entreprise sous Power BI. Une histoire de transformation digitale où la communauté devient le catalyseur du changement.</p>
+
+    <div class="actes">
+      <div class="acte">
+        <div class="acte-num">01</div>
+        <div class="acte-content">
+          <div class="acte-period">Avant 2019 — Le décor</div>
+          <div class="acte-title">Le chaos des données</div>
+          <div class="acte-desc">Sources multiples non connectées, CRM anciens, fichiers Excel dispersés. Chaque direction donnait un chiffre différent pour une même question simple. Plus de temps passé à débattre des chiffres qu'à piloter l'activité.</div>
+        </div>
+      </div>
+
+      <div class="acte">
+        <div class="acte-num">02</div>
+        <div class="acte-content">
+          <div class="acte-period">2019 — La bascule</div>
+          <div class="acte-title">Le défi humain avant tout</div>
+          <div class="acte-desc">Prise de conscience : l'enjeu est moins technique qu'humain. Réunions sémantiques pour aligner les définitions communes entre les directions.</div>
+          <div class="acte-quote">« Si nous ne nous mettons pas d'accord sur la base, aucun outil ne nous sauvera. »</div>
+        </div>
+      </div>
+
+      <div class="acte">
+        <div class="acte-num">03</div>
+        <div class="acte-content">
+          <div class="acte-period">2020 — Le confinement</div>
+          <div class="acte-title">Découverte de Power BI dans l'urgence</div>
+          <div class="acte-desc">Crise sanitaire + arrivée de 2 nouveaux outils métiers simultanément. Besoin urgent de suivre l'activité. Power BI s'impose comme l'outil simple, rapide et moderne. Apprentissage via la communauté : tutoriels, forums, YouTube, entraide.</div>
+        </div>
+      </div>
+
+      <div class="acte">
+        <div class="acte-num">04</div>
+        <div class="acte-content">
+          <div class="acte-period">2021–2023 — L'essor</div>
+          <div class="acte-title">Croissance et structuration</div>
+          <div class="acte-desc">De quelques tableaux de crise à un catalogue complet. Adoption totale par les métiers, gouvernance renforcée, transformation culturelle réelle.</div>
+          <div class="acte-quote">« Nous avons créé une culture data maison. »</div>
+        </div>
+      </div>
+
+      <div class="acte">
+        <div class="acte-num">05</div>
+        <div class="acte-content">
+          <div class="acte-period">2025 — Le présent</div>
+          <div class="acte-title">L'ossature de l'entreprise</div>
+          <div class="acte-desc">Power BI n'est plus un projet BI — c'est l'infrastructure de pilotage de l'entreprise. Tout le monde connaît le nombre de clients installés. La confiance est rétablie, la data est un partenaire stratégique.</div>
+          <div class="acte-quote">« Le jour où un directeur m'a dit : 'Si ton Power BI tombe, je ne peux pas faire ma réunion CODIR.' Ce n'est plus un projet BI, c'est l'ossature de l'entreprise. »</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pbi-stats">
+      <div class="stat-card">
+        <div class="stat-num">140+</div>
+        <div class="stat-label">Dashboards actifs<br>en production</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Adoption par les métiers<br>« Je ne peux plus travailler sans »</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">0</div>
+        <div class="stat-label">Point de départ —<br>construit from scratch</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="projets" id="projets">
+  <div class="inner">
+    <div class="s-tag">Réalisations</div>
+    <h2 class="s-title">Des projets concrets,<br><em>un impact mesurable</em></h2>
+    <div class="projets-grid">
+      <div class="card">
+        <div class="card-emoji">📉</div>
+        <div class="card-title">Modèle de churn</div>
+        <div class="card-desc">Pilotage de bout en bout du modèle prédictif de résiliation client — de la définition des besoins métier à la mise en production et aux actions de rétention.</div>
+        <div class="card-impact">Levier stratégique porté au CODIR</div>
+      </div>
+      <div class="card">
+        <div class="card-emoji">🎯</div>
+        <div class="card-title">Segmentation client</div>
+        <div class="card-desc">Conception et déploiement d'une segmentation complète — critères, méthodologie, scoring, mise à disposition aux équipes et documentation pour extensibilité.</div>
+        <div class="card-impact">Adoption réussie par les équipes commerciales</div>
+      </div>
+      <div class="card">
+        <div class="card-emoji">🏥</div>
+        <div class="card-title">Scoring santé du parc</div>
+        <div class="card-desc">Développement d'un scoring permettant d'évaluer la santé du portefeuille clients. Méthodologie robuste, impact business mesurable.</div>
+        <div class="card-impact">Nouveau regard sur la qualité du portefeuille</div>
+      </div>
+      <div class="card">
+        <div class="card-emoji">📊</div>
+        <div class="card-title">Gouvernance &amp; qualité des données</div>
+        <div class="card-desc">Structuration de la gouvernance data, pilotage de la qualité en transverse avec les différents domaines. Mise en place de standards et processus durables.</div>
+        <div class="card-impact">Culture data ancrée dans l'organisation</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="vision" id="vision">
+  <div class="inner">
+    <div class="s-tag">Ma vision</div>
+    <h2 class="s-title">La data comme<br><em>langage commun</em></h2>
+    <div class="vision-body">
+      <p class="vision-text">Je suis convaincue que la data n'est pas une fin en soi — c'est un outil au service des personnes et des décisions. Mon rôle, tel que je le conçois, c'est de faire le pont entre la complexité technique et les enjeux métiers, et de créer les conditions pour que la donnée soit comprise, utilisée et valorisée par tous.</p>
+      <div class="vp">
+        <div class="vp-title">Stratégie avant technique</div>
+        <div class="vp-text">La question n'est jamais "qu'est-ce qu'on peut faire avec la data" mais "qu'est-ce que l'organisation a besoin de savoir pour décider mieux".</div>
+      </div>
+      <div class="vp">
+        <div class="vp-title">Les équipes d'abord</div>
+        <div class="vp-text">Une direction Data qui fonctionne, c'est une équipe autonome, montée en compétence, qui porte les sujets sans dépendre d'une seule personne.</div>
+      </div>
+      <div class="vp">
+        <div class="vp-title">La transversalité comme moteur</div>
+        <div class="vp-text">Les vrais changements se font en transverse — avec les métiers, les équipes IT, les partenaires. La data est le fil qui relie.</div>
+      </div>
+      <div class="vp">
+        <div class="vp-title">L'impact comme boussole</div>
+        <div class="vp-text">Un dashboard sans décision derrière, c'est du bruit. Je mesure la valeur de mon travail à ce que ça change concrètement.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="certif-band">
+  <div class="certif-inner">
+    <div class="certif-logo">EDHEC</div>
+    <div class="certif-text">
+      <strong>Leadership de transformation</strong><br>
+      Certification professionnelle RNCP niveau 7 — "Asseoir son leadership pour transformer les organisations dans un environnement complexe et incertain"
+    </div>
+    <div class="certif-date">Avril 2026</div>
+  </div>
+</div>
+
+<section class="contact-section" id="contact">
+  <div class="contact-inner">
+    <div>
+      <div class="s-tag">Contact</div>
+      <h2 class="s-title" style="margin-bottom:10px">Échangeons</h2>
+      <p style="font-size:14px;color:var(--mid);font-weight:300;">Disponible pour des opportunités<br>de Directrice Data &amp; BI.</p>
+    </div>
+    <div class="contact-links">
+      <a href="mailto:mhodebert@msn.com" class="contact-link">✉ mhodebert@msn.com</a>
+      <a href="tel:+33670611757" class="contact-link">📱 06 70 61 17 57</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Marina Hodebert</p>
+  <p>Directrice Data &amp; BI</p>
+</footer>
+
+</body>
+</html>
